@@ -3,6 +3,8 @@ Thumbs.db*
 HELP.md
 .gradle
 build/
+data_mysql/
+data_postgres/
 
 ### STS ###
 .apt_generated
@@ -41,6 +43,6 @@ out/
 
 ### Exclusions ###
 !gradle/wrapper/gradle-wrapper.jar
-!artifacts/aqa-shop.jar
+!aqa-shop.jar
 !**/src/main/**
 !**/src/test/**
