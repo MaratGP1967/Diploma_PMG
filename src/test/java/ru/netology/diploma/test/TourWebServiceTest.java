@@ -25,8 +25,14 @@ public class TourWebServiceTest {
     }
 
     @Test
-    @DisplayName("Must successfully buy the tour")
-    void mustSuccessfullyBuyTour() {
+    @DisplayName("Must successfully buy the tour, card expires today")
+    void mustSuccessfullyBuyTourCurrentTime() {
+
+    }
+
+    @Test
+    @DisplayName("Must successfully buy the tour, card expires in five years")
+    void mustSuccessfullyBuyTourFiveYears() {
 
     }
 
