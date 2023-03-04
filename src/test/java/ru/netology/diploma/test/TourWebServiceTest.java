@@ -4,6 +4,8 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
+import ru.netology.diploma.data.DataHelp;
+import ru.netology.diploma.page.TourPurchasePage;
 
 import static com.codeborne.selenide.Selenide.open;
 
@@ -27,7 +29,9 @@ public class TourWebServiceTest {
     @Test
     @DisplayName("Must successfully buy the tour, card expires today")
     void mustSuccessfullyBuyTourCurrentTime() {
-
+        var tourPurchasePage = new TourPurchasePage();
+        var userCardInfo = DataHelp.generateUser("en");
+        tourPurchasePage.getBayTourButton(userCardInfo);
     }
 
     @Test

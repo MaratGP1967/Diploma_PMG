@@ -25,14 +25,10 @@ public class DataHelp {
         return LocalDate.now().plusDays(shift).format(DateTimeFormatter.ofPattern(pattern)); //pattern - "dd.MM.yyyy"
     }
 
-    public static class Registration {
-        private Registration() {
-        }
-
-        public static UserCardInfo generateUser(String locale) {
-            Faker faker = new Faker(new Locale(locale));
-            UserCardInfo user = new UserCardInfo("4444", "03", "23",faker.name().firstName() + " " + faker.name().lastName(), String.valueOf(faker.number().numberBetween(100, 999)));
-            return user;
-        }
+    public static UserCardInfo generateUser(String locale) {
+        Faker faker = new Faker(new Locale(locale));
+        UserCardInfo user = new UserCardInfo("4444 4444 4444 4441", "03", "23", faker.name().firstName() + " " + faker.name().lastName(), String.valueOf(faker.number().numberBetween(100, 999)));
+        return user;
     }
+
 }
