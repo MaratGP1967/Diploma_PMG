@@ -5,6 +5,8 @@ import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.Keys;
 import ru.netology.diploma.data.DataHelp;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -52,7 +54,6 @@ public class TourPurchasePage {
     }
 
     public void cardDataEntry(DataHelp.UserCardInfo user) {
-        //numberField.sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         numberField.setValue(user.getNumber());
         monthField.setValue(user.getMonth());
         yearField.setValue(user.getYear());
@@ -62,13 +63,13 @@ public class TourPurchasePage {
     }
 
     public void validPopUp() {
-        iconTitleGood.shouldBe(Condition.visible);
+        iconTitleGood.shouldBe(Condition.visible, Duration.ofSeconds(15));
         iconTextGood.shouldHave(Condition.text("Операция одобрена Банком.")).shouldBe(Condition.visible);
         iconGood.click();
     }
 
     public void notValidPopUp() {
-        iconTitleBad.shouldBe(Condition.visible);
+        iconTitleBad.shouldBe(Condition.visible, Duration.ofSeconds(15));
         iconTextBad.shouldHave(Condition.text("Ошибка! Банк отказал в проведении операции.")).shouldBe(Condition.visible);
         iconBad.click();
     }
