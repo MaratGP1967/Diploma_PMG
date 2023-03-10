@@ -2,7 +2,6 @@ package ru.netology.diploma.page;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.Keys;
 import ru.netology.diploma.data.DataHelp;
 
 import java.time.Duration;
@@ -77,15 +76,35 @@ public class TourPurchasePage {
     public void numberNotCorrect() {
         numberFieldFilledIncorrectly.shouldHave(Condition.text("Неверный формат")).shouldBe(Condition.visible);
     }
+
     public void monthNotCorrect() {
         monthFieldFilledIncorrectly.shouldHave(Condition.text("Неверный формат")).shouldBe(Condition.visible);
     }
+
+    public void monthCardExpired() {
+        monthFieldFilledIncorrectly.shouldHave(Condition.text("Истёк срок действия карты")).shouldBe(Condition.visible);
+    }
+
+    public void monthInvalidCardDate() {
+        monthFieldFilledIncorrectly.shouldHave(Condition.text("Неверно указан срок действия карты")).shouldBe(Condition.visible);
+    }
+
     public void yearNotCorrect() {
         yearFieldFilledIncorrectly.shouldHave(Condition.text("Неверный формат")).shouldBe(Condition.visible);
     }
+
+    public void yearCardExpired() {
+        yearFieldFilledIncorrectly.shouldHave(Condition.text("Истёк срок действия карты")).shouldBe(Condition.visible);
+    }
+
+    public void yearInvalidCardDate() {
+        yearFieldFilledIncorrectly.shouldHave(Condition.text("Неверно указан срок действия карты")).shouldBe(Condition.visible);
+    }
+
     public void nameNotCorrect() {
         nameFieldFilledIncorrectly.shouldHave(Condition.text("Поле обязательно для заполнения")).shouldBe(Condition.visible);
     }
+
     public void securityCodesNotCorrect() {
         securityCodesFieldFilledIncorrectly.shouldHave(Condition.text("Неверный формат")).shouldBe(Condition.visible);
     }
