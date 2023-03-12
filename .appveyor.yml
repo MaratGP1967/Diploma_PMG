@@ -1,6 +1,6 @@
 image: Ubuntu
 
-stack: jdk 11
+stack: jdk 11, docker
 
 branches:
   only:
@@ -8,10 +8,44 @@ branches:
 
 build: off
 
-install:
+environment:
+  matrix:
+    - job_name: msql
+    - job_name: psql
 
-  - java -jar ./artifacts/aqa-shop.jar &
+for:
+  -
+    matrix:
+      only:
+        - job_name: msql
 
-build_script:
-  - chmod +x gradlew
-  - ./gradlew test --info -Dselenide.headless=true
+    install:
+      - docker compose down &
+      - sleep 10s
+      - docker compose up &
+      - sleep 1m
+      - java -jar artifacts/aqa-shop.jar --spring.profiles.active=msql &
+      - sleep 20s
+
+    build_script:
+      - chmod +x gradlew
+      - ./gradlew clean test -Ddb.url=jdbc:mysql://localhost:3306/msql -Dschemas=msql -Dselenide.headless=true
+      - sleep 20s
+
+  -
+    matrix:
+      only:
+        - job_name: psql
+        - job_depends_on: msql
+
+    install:
+      - docker compose down &
+      - sleep 10s
+      - docker compose up &
+      - sleep 1m
+      - java -jar artifacts/aqa-shop.jar --spring.profiles.active=psql &
+      - sleep 20s
+
+    build_script:
+      - chmod +x gradlew
+      - ./gradlew clean test -Ddb.url=jdbc:postgresql://localhost:5432/psql -Dschemas=public -Dselenide.headless=true
