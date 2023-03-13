@@ -1,5 +1,4 @@
-## MYSQL [![Build status](https://ci.appveyor.com/api/projects/status/kehrt7lt6qg02gba?svg=true)](https://ci.appveyor.com/project/MaratGP1967/diploma-pmg) 
-## PostgreSQL [![Build status](https://ci.appveyor.com/api/projects/status/kehrt7lt6qg02gba?svg=true)](https://ci.appveyor.com/project/MaratGP1967/diploma-pmg)
+[![Build status](https://ci.appveyor.com/api/projects/status/kehrt7lt6qg02gba?svg=true)](https://ci.appveyor.com/project/MaratGP1967/diploma-pmg)
 # Дипломный проект по профессии «Тестировщик»
 ### Дипломный проект — автоматизация тестирования комплексного сервиса, взаимодействующего с СУБД и API Банка.
 
