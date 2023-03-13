@@ -24,11 +24,12 @@ for:
       - sleep 10s
       - docker compose up &
       - sleep 1m
-
+      - java -jar artifacts/aqa-shop.jar --spring.profiles.active=msql &
+      - sleep 20s
 
     build_script:
       - chmod +x gradlew
-      - ./gradlew clean test
+      - ./gradlew clean test -Ddb.url=jdbc:mysql://localhost:3306/msql -Dschemas=msql -Dselenide.headless=true
 
   -
     matrix:
@@ -41,7 +42,9 @@ for:
       - sleep 10s
       - docker compose up &
       - sleep 1m
+      - java -jar artifacts/aqa-shop.jar --spring.profiles.active=psql &
+      - sleep 20s
 
     build_script:
       - chmod +x gradlew
-      - ./gradlew clean test
+      - ./gradlew clean test -Ddb.url=jdbc:postgresql://localhost:5432/psql -Dschemas=public -Dselenide.headless=true
