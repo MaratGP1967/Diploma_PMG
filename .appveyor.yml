@@ -30,7 +30,6 @@ for:
     build_script:
       - chmod +x gradlew
       - ./gradlew clean test -Ddb.url=jdbc:mysql://localhost:3306/msql -Dschemas=msql -Dselenide.headless=true
-      - sleep 20s
 
   -
     matrix:
